@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <script src="https://unpkg.com/@webcomponents/webcomponentsjs@next/webcomponents-loader.js"></script>
+        <link rel="stylesheet" type="text/css" href="./demo.css">
+        <script src="./demo.js"></script>
+
+        <script src="//khan.github.io/tota11y/tota11y/build/tota11y.min.js"></script>
+    </head>
+    <body>
+        <myuw-app-bar
+            theme-name="MyUW"
+            theme-url="./"
+            app-name="Bucky Bakup">
+          <myuw-drawer slot="myuw-navigation">
+            <myuw-drawer-link
+              slot="myuw-drawer-links"
+              name="MyUW home"
+              icon="mail"
+              href="http://google.com">
+            </myuw-drawer-link>
+          </myuw-drawer>
+          <myuw-help slot="myuw-help">
+          </myuw-help>
+          <myuw-profile slot="myuw-profile" session-endpoint="lib/myuw-profile/session.json"></myuw-profile>
+        </myuw-app-bar>
+        <div class="demo__container">
+            <div class="demo__test-content">
+                <div class="demo__grid-box">
+                    <div><a href="./demo1.html"><button name="demo1">Demo 1</button></a></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
