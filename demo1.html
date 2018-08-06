@@ -15,7 +15,7 @@
         <myuw-app-bar
             theme-name="MyUW"
             theme-url="./"
-            app-name="Bucky Backu">
+            app-name="Bucky Backup">
           <myuw-drawer slot="myuw-navigation">
             <myuw-drawer-link
               slot="myuw-drawer-links"
@@ -29,11 +29,60 @@
           <myuw-profile slot="myuw-profile" session-endpoint="lib/myuw-profile/session.json"></myuw-profile>
         </myuw-app-bar>
         <div class="demo__container">
-            <div class="demo__test-content">
-                <div class="demo__grid-box">
-                    <div>HELLO!!</div>
-                </div>
+          <div class="demo__test-content">
+            <div class="demo__grid-box">
+                <form name="testPortalNameChange">
+                    <label for="newPortalName">Update portal name:</label>
+                    <input id="newPortalName" type="text" placeholder="New portal name"/>
+                    <button onclick="testUpdate(event, 'theme-name',  newPortalName.value)">Update</button>
+                </form>
             </div>
+            <div class="demo__grid-box">
+                <form name="testAppNameChange">
+                    <label for="newAppName">Update app name:</label>
+                    <input id="newAppName" type="text" placeholder="New app name"/>
+                    <button onclick="testUpdate(event, 'app-name',  newAppName.value)">Update</button>
+                </form>
+            </div>
+            <div class="demo__grid-box">
+                <form name="testBackgroundChange">
+                    <label for="newBackground">Update background color:</label>
+                    <input id="newBackground" type="text" placeholder="rgb(33,150,243)"/>
+                    <button onclick="testAddCss(event, 'myuw-app-bar-bg',  newBackground.value)">Update</button>
+                </form>
+            </div>
+          </div>
         </div>
+        <script>
+            /**
+            *   Make sure component attributes are targetable
+            *   and updatable from external JS
+            *
+            *   @param e {*} The event object
+            *   @param attribute {String} The name of the attribute to target
+            *   @param newValue {String} The new value to set
+            */
+            function testUpdate(e, attribute, newValue) {
+                e.preventDefault();
+                // Get app bar
+                var _appBar = document.getElementsByTagName('myuw-app-bar')[0];
+                _appBar.setAttribute(attribute, newValue);
+            }
+
+            /**
+            *   Demonstrate how to update CSS properties programatically
+            */
+            function testAddCss(e, property, value) {
+                e.preventDefault();
+                var _newCss = document.createElement('style');
+                _newCss.innerHTML = `
+                    myuw-app-bar {
+                        --${property}: ${value};
+
+                    }
+                `
+                document.head.appendChild(_newCss);
+            }
+        </script>
     </body>
 </html>
