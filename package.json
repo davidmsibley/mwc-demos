@@ -13,7 +13,7 @@
     "serve": "live-server dist/",
     "start": "run-p watch serve",
     "prepare": "npm run build",
-    "pages": "gh-pages -d dist"
+    "pages": "gh-pages -d dist --repo git@github.com:myuw-web-components/mwc-demos.git"
   },
   "repository": {
     "type": "git",
